@@ -5,9 +5,13 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import { useStyles } from './appbar.styles';
+import { useLocation } from 'react-router-dom';
 
 const AppBarComponent = () => {
+    const location = useLocation();
     const classes = useStyles();
+
+    const isHome = (): boolean => location.pathname === '/'
 
     return (
         <div className={classes.root}>
@@ -16,7 +20,7 @@ const AppBarComponent = () => {
                     <Typography className={classes.title} variant="h6" noWrap>
                         Breaking Bad App
                     </Typography>
-                    <div className={classes.search}>
+                    {isHome() && <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon />
                         </div>
@@ -28,7 +32,7 @@ const AppBarComponent = () => {
                             }}
                             inputProps={{ 'aria-label': 'search' }}
                         />
-                    </div>
+                    </div>}
                 </Toolbar>
             </AppBar>
         </div>
