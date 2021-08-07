@@ -2,7 +2,7 @@ import { IsArray, IsNumber, IsString } from "class-validator";
 
 export class CharacterModel {
     @IsNumber()
-    id: number;
+    char_id: number;
 
     @IsString()
     name: string;
