@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import configureStore from './store/store';
+import './i18n';
 
 const store = configureStore();
 
