@@ -6,6 +6,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import AppBarComponent from './components/appbar.component/appbar.component';
+import CharacterView from './components/character.view.component/character.view.component';
 import HomeComponent from './components/home.component/home.component';
 
 const App = () => {
@@ -16,8 +17,7 @@ const App = () => {
         <Route exact path="/">
           <HomeComponent />
         </Route>
-        <Route path="/character/:id">
-          <></>
+        <Route path="/character/:id" component={CharacterView}>
         </Route>
         <Route path="*">
           <Redirect to="/" />

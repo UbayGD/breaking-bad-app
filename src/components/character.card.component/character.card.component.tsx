@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
@@ -9,29 +10,32 @@ import { CharacterCardProps } from './character.card.types';
 
 const CharacterCard = (props: CharacterCardProps) => {
     const { character } = props;
-    const { id, name, nickname, img } = character;
+    const { char_id, name, nickname, img } = character;
     const classes = useStyles();
 
     return (
-        <Card className={classes.root}>
-            <CardActionArea>
-                <CardMedia
-                    component="img"
-                    className={classes.media}
-                    image={img}
-                    alt={name}
-                    title={name}
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="h6" component="h3">
-                        {name}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        {nickname}
-                    </Typography>
-                </CardContent>
-            </CardActionArea>
-        </Card>
+        <Link to={location => `/character/${char_id}`}>
+            <Card className={classes.root}>
+                <CardActionArea>
+                    <CardMedia
+                        component="img"
+                        className={classes.media}
+                        image={img}
+                        alt={name}
+                        title={name}
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h6" component="h3">
+                            {name}
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            {nickname}
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+            </Card>
+        </Link>
+        
     );
 }
 
