@@ -11,7 +11,7 @@ export class CharacterModel {
     birthday: string;
 
     @IsArray()
-    occupation: string[];
+    private occupation: string[];
 
     @IsString()
     img: string;
@@ -23,8 +23,16 @@ export class CharacterModel {
     nickname: string;
 
     @IsArray()
-    appearance: number[];
+    private appearance: number[];
 
     @IsString()
     portrayed: string;
+
+    get occupations() {
+        return this.occupation?.toString();
+    }
+
+    get appearances() {
+        return this.appearance?.toString();
+    }
 }

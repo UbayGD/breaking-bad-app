@@ -81,7 +81,7 @@ const CharacterView = () => {
                 </ListItem>
                 <ListItem>
                     <ListItemText primary="Occupation" 
-                        secondary={character?.occupation || <Skeleton variant="text" />} 
+                        secondary={character?.occupations || <Skeleton variant="text" />} 
                     />
                 </ListItem>
                 <ListItem>
@@ -91,7 +91,7 @@ const CharacterView = () => {
                 </ListItem>
                 <ListItem>
                     <ListItemText primary="Appearance" 
-                        secondary={character?.appearance || <Skeleton variant="text" />} 
+                        secondary={character?.appearances || <Skeleton variant="text" />} 
                     />
                 </ListItem>
             </List>
