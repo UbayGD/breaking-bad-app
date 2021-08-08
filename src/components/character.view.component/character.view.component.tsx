@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Grid, List, ListItem, ListItemText, Paper } from '@material-ui/core';
@@ -7,9 +7,10 @@ import { CharacterModel } from '../../models/character.model';
 import { getCharacterAction } from '../../actions/characters.actions';
 import { useStyles } from './character.view.styles';
 import { getQuote } from '../../services/api.service';
-import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const CharacterView = () => {
+    const [t] = useTranslation();
     const classes = useStyles();
     const dispatch = useDispatch()
     const { id } = useParams<{ id: string }>();
@@ -60,37 +61,37 @@ const CharacterView = () => {
         return (
             <List className={classes.list}>
                 <ListItem>
-                    <ListItemText primary="Name" 
+                    <ListItemText primary={t('character.name')} 
                         secondary={character?.name || <Skeleton variant="text" />} 
                     />
                 </ListItem>
                 <ListItem>
-                    <ListItemText primary="Nickname" 
+                    <ListItemText primary={t('character.nickname')} 
                         secondary={character?.nickname || <Skeleton variant="text" />} 
                     />
                 </ListItem>
                 <ListItem>
-                    <ListItemText primary="Birthday" 
+                    <ListItemText primary={t('character.birthday')} 
                         secondary={character?.birthday || <Skeleton variant="text" />} 
                     />
                 </ListItem>
                 <ListItem>
-                    <ListItemText primary="Status" 
+                    <ListItemText primary={t('character.status')} 
                         secondary={character?.status || <Skeleton variant="text" />} 
                     />
                 </ListItem>
                 <ListItem>
-                    <ListItemText primary="Occupation" 
+                    <ListItemText primary={t('character.occupation')} 
                         secondary={character?.occupations || <Skeleton variant="text" />} 
                     />
                 </ListItem>
                 <ListItem>
-                    <ListItemText primary="Portrayed" 
+                    <ListItemText primary={t('character.portrayed')} 
                         secondary={character?.portrayed || <Skeleton variant="text" />} 
                     />
                 </ListItem>
                 <ListItem>
-                    <ListItemText primary="Appearance" 
+                    <ListItemText primary={t('character.appearance')} 
                         secondary={character?.appearances || <Skeleton variant="text" />} 
                     />
                 </ListItem>
