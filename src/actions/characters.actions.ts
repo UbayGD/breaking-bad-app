@@ -19,3 +19,17 @@ export const getCharactersErrorAction = () => {
         type: CHARACTERS_ACTIONS_CONSTANTS.GET_CHARACTERS_ERROR
     }
 }
+
+export const getCharacterAction = (id: string) => {
+    return {
+        type: CHARACTERS_ACTIONS_CONSTANTS.GET_CHARACTER,
+        id
+    }
+}
+
+export const getCharacterSuccessAction = (payload: CharacterModel[]) => {
+    return {
+        type: CHARACTERS_ACTIONS_CONSTANTS.GET_CHARACTER_SUCCESS,
+        payload
+    }
+}
