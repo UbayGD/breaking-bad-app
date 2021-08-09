@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Grid, List, ListItem, ListItemText, Paper } from '@material-ui/core';
@@ -6,8 +6,8 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import { CharacterModel } from '../../models/character.model';
 import { getCharacterAction } from '../../actions/characters.actions';
 import { useStyles } from './character.view.styles';
-import { getQuote } from '../../services/api.service';
 import { useTranslation } from 'react-i18next';
+import { clearQuoteAction, getQuoteAction } from '../../actions/quote.actions';
 
 const CharacterView = () => {
     const [t] = useTranslation();
@@ -17,31 +17,27 @@ const CharacterView = () => {
     const character = useSelector<{ characters: CharacterModel[] }, CharacterModel | undefined>(state => {
         return state.characters?.find((character => character.char_id === Number(id)))
     });
-    const [quote, setQuote] = useState<string>();
+    const quote = useSelector<{ quote: string}, string>(state => state.quote);
 
     useEffect(() => {
         if (!character) {
             dispatch(getCharacterAction(id));
         } else {
-            (async () => {
-                getCharacterQuote()
-            })()
+            dispatch(getQuoteAction(character.name));
         }
+    // eslint-disable-next-line
     }, [character])
 
     useEffect(() => {
         const quoteInterval = setInterval(() => {
-            getCharacterQuote()
+            character && dispatch(getQuoteAction(character?.name));
         }, 7000);
-        return () => clearInterval(quoteInterval);
+        return () => {
+            dispatch(clearQuoteAction());
+            clearInterval(quoteInterval)
+        };
+    // eslint-disable-next-line
     }, []);
-
-    const getCharacterQuote = async () => {
-        if (character) {
-            const q = await getQuote(character.name);
-            setQuote(q);
-        } 
-    }
 
     const renderImg = (): JSX.Element => {
         return (
