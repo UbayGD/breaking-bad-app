@@ -13,7 +13,7 @@ export const charactersReducer = (state = initialState, action: CharacterReducer
         case CHARACTERS_ACTIONS_CONSTANTS.GET_CHARACTERS_SUCCESS:
             return action.payload;
         case CHARACTERS_ACTIONS_CONSTANTS.GET_CHARACTER_SUCCESS: {
-            if (!state) {
+            if (state.length === 0) {
                 return action.payload;
             }
             return state;
