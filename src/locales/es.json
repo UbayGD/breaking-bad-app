@@ -1,0 +1,16 @@
+{
+    "es": {
+        "translation": {
+            "search": "Buscar",
+            "character": {
+                "name": "Nombre",
+                "birthday": "Fecha de Nacimiento",
+                "occupation": "Ocupación",
+                "status": "Estado",
+                "nickname": "Apodo",
+                "appearance": "Apariciones",
+                "portrayed": "Interpretado por"
+            }
+        }
+    }
+}
