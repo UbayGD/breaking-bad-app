@@ -1,3 +1,4 @@
+import { Exclude } from "class-transformer";
 import { IsArray, IsNumber, IsString } from "class-validator";
 
 export class CharacterModel {
@@ -28,10 +29,12 @@ export class CharacterModel {
     @IsString()
     portrayed: string;
 
+    @Exclude()
     get occupations() {
         return this.occupation?.toString();
     }
 
+    @Exclude()
     get appearances() {
         return this.appearance?.toString();
     }

@@ -24,6 +24,7 @@ const AppBarComponent = () => {
         return (
             <FormControl className={classes.formControl}>
                 <Select
+                    data-testid="language-select"
                     value={i18n.language}
                     onChange={handleChangeLanguage}
                     className={classes.select}>
